@@ -1,16 +1,289 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
+  display: flex;
+  flex-direction: column;
+  inline-size: clamp(320px, 100vw, 700px);
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  margin: 100px auto;
+  background-color: #1a1a1a;
+  background-image: repeating-linear-gradient(transparent, #d3d3d3 2px),
+                    repeating-linear-gradient(90deg, transparent, #d3d3d3 2px),
+                    linear-gradient(#e7e7e7, #1a1a1a);
+  background-size: cover;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-normal);
+  font-variation-settings: var(--font-weight-normal-variation);
+}
+
+.header {
+  margin:  0 0 100px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: clamp(120px, 100%, 128px) 0;
+  border: var(--box-stroke);
+  background-color: #fff;
+}
+
+.hero__title {
+  font-family: var(--font-family-deco);
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.hero__subtitle {
+  font-family: var(--font-family-deco);
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin: 0 0 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: var(--box-stroke);
+  background-color: #fff;
+}
+
+.card__title {
+  margin: 5px 10px;
+  font-size: var(--font-size-large);
+  font-variation-settings: var(--font-weight-bold-variation);
+}
+
+@supports (font-variation-settings: var(--font-weight-bold-variation)) {
+  .card__title {
+    font-variation-settings: var(--font-weight-bold-variation);
+  }
+}
+
+.card__image-wrapper {
+  display: flex;
+  position: relative;
+  border-top: var(--box-stroke);
+  border-bottom: var(--box-stroke);
+  overflow: hidden;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+}
+
+.card:nth-child(2) .card__image {
+  filter: grayscale(80%);
+}
+
+.card:nth-child(3) .card__image {
+  filter: saturate(400%);
+}
+
+.card:nth-child(4) .card__image {
+  filter: hue-rotate(30deg);
+}
+
+.card:nth-child(5) .card__image {
+  filter: invert(80%);
+}
+
+.card:nth-child(6) .card__image {
+  filter: sepia(90%);
+}
+
+.card:nth-child(7) .card__image {
+  filter: blur(20px);
+}
+
+.card:nth-child(8) .card__image {
+  filter: blur(2px) contrast(130%) saturate(130%) hue-rotate(90deg) saturate(130%) contrast(40%);
+}
+
+.card__image-caption {
+  position: absolute;
+  top: 25px;
+  right: clamp(13px, 13px + 0.75vw, 25px);
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  font-family: var(--font-family-deco);
+  text-shadow: 1px 1px 0 #fff,
+               1px -1px 0 #fff,
+               -1px 1px 0 #fff,
+               -1px -1px 0 #fff;
+}
+
+@supports (-webkit-text-stroke: 1px #fff) {
+  .card__image-caption {
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: none;
+  }
+}
+
+@supports (text-stroke: 1px #fff) {
+  .card__image-caption {
+    text-stroke: 1px #fff;
+    text-shadow: none;
+  }
+}
+
+.card__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 25px;
+}
+
+.card__text {
+  font-size: var(--font-size-large);
+}
+
+.card__button-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+  margin: 0 25px 25px;
+}
+
+.card__icon-button {
+  display: flex;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+}
+
+.box-button {
+  position: relative;
+  border: var(--box-stroke);
+  background-color: #fff;
+  color: #fff;
+  fill: #fff;
+  transition: color 0.3s ease-in, box-shadow 0.3s ease;
+}
+
+.box-button:focus {
+  box-shadow: 2px 2px 0 rgb(0 0 0 / 1);
+}
+
+.box-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 100%;
+  height: 100%;
+  background-color: #000;
+  transition: right 0.5s ease-in-out;
+}
+
+.box-button:hover::before {
+  right: 0;
+  transition: right 0.5s ease-in-out;
+}
+
+.button__text {
+  mix-blend-mode: difference;
+  font-family: var(--font-family-deco);
+}
+
+.card__like-button {
+  display: flex;
+  justify-content: center;
+  width: 130px;
+  padding: 10px;
+  transition: color 0.5s ease-in-out;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__save-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12.5px 18px;
+}
+
+.footer__save-button-icon {
+  mix-blend-mode: difference;
+}
+
+.dialog {
+  flex-direction: column;
+  gap: 30px;
+  max-width: 353px;
+  padding: 30px 42px;
+  border: var(--box-stroke);
+  opacity: 0;
+  font-family: var(--font-family-deco);
+  font-size: var(--font-size-medium);
+  animation: disappear 0.3s forwards;
+}
+
+.dialog[open] {
+  display: flex;
+  place-self: center;
+  position: fixed;
+  opacity: 1;
+  z-index: 1000;
+  animation: appear 0.3s ease;
+}
+
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+  animation: disappear 0.3s ease forwards;
+}
+
+.dialog[open]::backdrop {
+  animation: appear 0.3s ease forwards;
+}
+
+.dialog__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog__content-icon {
+  min-width: 45px;
+}
+
+.dialog__content-text {
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.dialog__close-button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+
+@media (width <= 375px) {
+  .footer__save-button {
+    flex-direction: column;
+  }
+
+  .footer__save-button-icon {
+    width: 28px;
+    height: 28px;
+  }
 }

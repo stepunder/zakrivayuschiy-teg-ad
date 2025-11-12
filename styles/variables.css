@@ -1,1 +1,12 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --box-stroke: 2px solid #000;
+  --animation-duration: 0.3s;
+  --font-family-base: 'Inter', Arial, sans-serif;
+  --font-family-deco: 'PressStart2P', 'Courier New', monospace;
+  --font-size-large: 18px;
+  --font-size-medium: 14px;
+  --font-weight-bold-variation: "wght" var(--font-weight-bold);
+  --font-weight-bold: 785;
+  --font-weight-normal-variation: "wght" var(--font-weight-normal);
+  --font-weight-normal: 400;
+}

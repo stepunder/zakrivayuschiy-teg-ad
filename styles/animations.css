@@ -1,11 +1,107 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+.card__icon-button .heart__sparks {
+  fill: transparent;
+  transition: fill var(--animation-duration) ease 0.03s;
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+.card__icon-button .heart__body {
+  fill: transparent;
+  transition: fill var(--animation-duration) ease 0.03s;
+}
 
-*/
+.card__icon-button .heart__core {
+  fill: transparent;
+  transition: fill var(--animation-duration) ease 0.03s;
+}
+
+.card__icon-button:hover .heart__body {
+  fill: #000;
+  transition: fill var(--animation-duration) ease 0.05s;
+}
+
+.card__icon-button:hover .heart__core {
+  fill: #000;
+  transition: fill var(--animation-duration) ease;
+}
+
+.card__icon-button:active .heart__body {
+  fill: #f00;
+  transition: fill var(--animation-duration) ease 0.05s;
+}
+
+.card__icon-button:active .heart__core {
+  fill: #f00;
+  transition: fill var(--animation-duration) ease;
+}
+
+.card__icon-button .is-liked {
+  animation: like var(--animation-duration) ease-in 0.1s;
+}
+
+.card__icon-button .is-liked .heart__sparks {
+  animation: sparks var(--animation-duration) ease-in 0.3s;
+}
+
+.card__icon-button .is-liked .heart__contour {
+  fill: #f00;
+  transition: fill var(--animation-duration) linear 0.06s;
+}
+
+.card__icon-button .is-liked .heart__body {
+  fill: #f00;
+  transition: fill var(--animation-duration) linear 0.05s;
+}
+
+.card__icon-button .is-liked .heart__core {
+  fill: #f00;
+  transition: fill var(--animation-duration) linear;
+}
+
+@keyframes like {
+  0% {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.25;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes sparks {
+  0% {
+    fill: transparent;
+  }
+
+  50% {
+    fill: #f00;
+  }
+
+  100% {
+    fill: transparent;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  from {
+    display: flex;
+    opacity: 1;
+  }
+
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
